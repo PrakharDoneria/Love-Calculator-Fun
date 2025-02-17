@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Calculator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  Hello world
+  <div class="container">
+    <h1>Love Calculator</h1>
+    <input id="yourName" type="text" placeholder="Your Name" required>
+    <input id="partnerName" type="text" placeholder="Partner's Name" required>
+    <button onclick="submitNames()">Check Love</button>
+    <p id="responseMessage"></p>
+    <img id="successImage" src="assets/padhai.png" alt="Success" style="display:none;">
+  </div>
+
   <script src="script.js"></script>
 </body>
-
 </html>

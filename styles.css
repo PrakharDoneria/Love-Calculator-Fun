@@ -1,0 +1,177 @@
+/* Romantic color palette and base styles */
+:root {
+  --primary-color: #ff6b88;
+  --secondary-color: #ff8fa3;
+  --accent-color: #ffd1d9;
+  --text-color: #4a4a4a;
+  --background-color: #fff5f6;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, var(--background-color), #fff9fa);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 107, 136, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Floating hearts background */
+.container::before {
+  content: '♥';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  font-size: 40px;
+  color: var(--accent-color);
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite;
+}
+
+.container::after {
+  content: '♥';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  font-size: 40px;
+  color: var(--accent-color);
+  opacity: 0.3;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+/* Input styling */
+input {
+  width: calc(100% - 40px);
+  padding: 12px 20px;
+  margin: 15px 0;
+  font-size: 16px;
+  border: 2px solid var(--accent-color);
+  border-radius: 25px;
+  background: white;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(255, 107, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Button styling */
+button {
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Playfair Display', serif;
+}
+
+button:hover {
+  background: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 107, 136, 0.3);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+/* Response message styling */
+#responseMessage {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.5s ease forwards;
+}
+
+#successImage {
+  margin-top: 25px;
+  max-width: 200px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(0);
+  animation: scaleIn 0.6s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Hover effects */
+.container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(255, 107, 136, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+    width: 85%;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 25px;
+  }
+}
