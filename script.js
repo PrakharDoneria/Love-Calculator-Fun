@@ -1,14 +1,28 @@
 const backendUrl = "https://love-calculator.deno.dev";
 
 async function submitNames() {
-  const yourName = document.getElementById("yourName").value.trim();
-  const partnerName = document.getElementById("partnerName").value.trim();
+  const yourName = document.getElementById("yourName").value.trim().toLowerCase();
+  const partnerName = document.getElementById("partnerName").value.trim().toLowerCase();
   const responseMessage = document.getElementById("responseMessage");
   const successImage = document.getElementById("successImage");
 
   if (!yourName || !partnerName) {
     responseMessage.textContent = "Please enter both names.";
     responseMessage.style.color = "red";
+    return;
+  }
+
+  // Check for names of God
+  const forbiddenNames = ["radha", "krishna", "kahna"];
+  if (
+    forbiddenNames.includes(yourName) ||
+    forbiddenNames.includes(partnerName) ||
+    (yourName.includes("radha") && partnerName.includes("krishna")) ||
+    (yourName.includes("krishna") && partnerName.includes("radha"))
+  ) {
+    responseMessage.textContent = "Please do not use names of God.";
+    responseMessage.style.color = "red";
+    successImage.style.display = "none";
     return;
   }
 
